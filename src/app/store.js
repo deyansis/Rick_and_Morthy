@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-
 import { countriesApi } from "../services/countriesApi";
-import { countriesApi } from "../services/characterApi";
+import { characterApi } from "../services/characterApi";
+
 import { commentsApi } from "../features/comments/commentsApi";
 
 export const store = configureStore({
