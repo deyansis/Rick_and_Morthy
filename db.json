@@ -60,6 +60,15 @@
       "rating": 3,
       "characterId": 22,
       "createdAt": "2025-08-25T17:17:18.845Z"
+    },
+    {
+      "id": "7259",
+      "author": "fernando",
+      "email": "fernando@gmail.com",
+      "text": "a veces es raro",
+      "rating": 2,
+      "characterId": 2,
+      "createdAt": "2025-08-25T18:10:21.783Z"
     }
   ]
 }

@@ -3,7 +3,7 @@ import Layout from "../components/UI/Layout";
 import Home from "../pages/Home";
 import CharacterDetail from "../features/characters/pages/CharacterDetailPage";
 
-import NewCommentFormPage from "../features/comments/NewCommentFormPage";
+import NewCommentFormPage from "../features/characters/components/comments/NewCommentFormPage";
 import NotFound from "../pages/NotFound";
 
 export default function AppRouter() {

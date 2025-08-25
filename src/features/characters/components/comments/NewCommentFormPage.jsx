@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import NewCommentForm from "./NewCommentForm";
-import { useAddCommentMutation } from "./commentsApi";
+import { useAddCommentMutation } from "../../../../services/commentsApi";
 
 
 export default function NewCommentFormPage() {

@@ -6,10 +6,10 @@ import {
   useGetCommentsByCharacterQuery,
   useAddCommentMutation,
   useDeleteCommentMutation,
-} from "../../comments/commentsApi";
+} from "../../../services/commentsApi";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import NewCommentForm from "../../comments/NewCommentForm";
+import NewCommentForm from "../components/comments/NewCommentForm";
 import {
   FaHeart,
   FaSkull,

@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { countriesApi } from "../services/countriesApi";
 import { characterApi } from "../services/characterApi";
 
-import { commentsApi } from "../features/comments/commentsApi";
+import { commentsApi } from "../services/commentsApi";
 
 export const store = configureStore({
   reducer: {
