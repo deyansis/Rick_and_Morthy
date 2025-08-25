@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import {
   useGetCharacterByIdQuery,
-} from "../characterApi";
+} from "../../../services/characterApi";
 import {
   useGetCommentsByCharacterQuery,
   useAddCommentMutation,

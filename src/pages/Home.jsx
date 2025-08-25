@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGetCharactersQuery } from "../features/characters/characterApi";
+import { useGetCharactersQuery } from "../services/characterApi";
 import CharacterList from "../features/characters/components/CharacterList";
 import SearchBar from "../features/characters/components/SearchBar";
 
@@ -41,7 +41,14 @@ export default function Home() {
         />
       </header>
 
-      <CharacterList characters={filteredCharacters} />
+      {/* Si no hay personajes después del filtrado */}
+      {filteredCharacters.length === 0 ? (
+        <p className="text-center text-red-400 text-xl mt-6 animate-pulse">
+          ❌ No se encontraron personajes con ese nombre
+        </p>
+      ) : (
+        <CharacterList characters={filteredCharacters} />
+      )}
 
       {/* Paginación */}
       <div className="flex justify-center mt-8 gap-4">
