@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "id": "7456",
+      "characterId": "12",
+      "text": "es muy curioso"
+    },
+    {
+      "id": "a52b",
+      "characterId": "59",
+      "text": "jajaja gracioso"
+    },
+    {
+      "id": "ebbf",
+      "characterId": "4",
+      "text": "Ella es muy graciosa jaja"
+    },
+    {
+      "id": "494e",
+      "text": "superr",
+      "characterId": 4
+    },
+    {
+      "id": "c7e6",
+      "text": "Oww",
+      "characterId": 3
+    },
+    {
+      "id": "9a63",
+      "author": "deyssii",
+      "email": "javiierlc20@gmail.com",
+      "text": "oww",
+      "rating": 2,
+      "characterId": 2,
+      "createdAt": "2025-08-22T19:31:09.018Z"
+    },
+    {
+      "id": "00d7",
+      "author": "franco",
+      "email": "franco@gmail.com",
+      "text": "asuuu , que chevere!",
+      "rating": 1,
+      "characterId": 18,
+      "createdAt": "2025-08-22T19:32:06.925Z"
+    }
+  ]
+}

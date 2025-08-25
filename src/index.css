@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aquí puedes agregar estilos globales si quieres */
+body {
+  @apply bg-gray-900 text-white;
+ 
+}
+ 
+/* Fondo galáctico animado */
+.bg-galaxy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+ 
+  background: linear-gradient(-35deg, #697588, #1d456d, #3e1657);
+  background-size: 400% 400%;
+  animation: gradientMove 14s ease infinite;
+  z-index: -10;
+  overflow: hidden;
+}
+
+/* Animación de degradado */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
