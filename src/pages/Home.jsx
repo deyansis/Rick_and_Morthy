@@ -37,11 +37,10 @@ export default function Home() {
   // Número de personajes por página (según la API, 20 por página)
   const itemsPerPage = 20;
 
-  // Si no hay personajes filtrados, las páginas son 1
-  const totalPages =
-    filteredCharacters.length === 0
-      ? 1
-      : Math.ceil(filteredCharacters.length / itemsPerPage);
+  // Calculamos el total de páginas
+  const totalPages = searchTerm
+    ? Math.ceil(filteredCharacters.length / itemsPerPage) || 1
+    : data?.info?.pages || 1;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1f2244] via-[#2b2641] to-[#21243a] text-white pb-6 px-7">
@@ -66,8 +65,13 @@ export default function Home() {
         <CharacterList characters={filteredCharacters} />
       )}
 
-      {/* Paginación: solo si hay más personajes que itemsPerPage */}
-      {filteredCharacters.length > itemsPerPage && (
+      {/* Paginación */}
+      {(
+        // Si no hay búsqueda → siempre mostramos los botones
+        !searchTerm ||
+        // Si hay búsqueda y más de 1 página de resultados → mostramos botones
+        (searchTerm && filteredCharacters.length > itemsPerPage)
+      ) && filteredCharacters.length > 0 && (
         <div className="flex justify-center mt-8 gap-4">
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
