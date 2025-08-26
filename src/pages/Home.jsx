@@ -7,10 +7,12 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
 
-  // Obtenemos personajes desde la API
-  const { data, isLoading, isError } = useGetCharactersQuery({ page });
+  const { data, isLoading, isError } = useGetCharactersQuery({
+    page,
+    name: searchTerm,
+  });
 
-  // Cada vez que cambie el término de búsqueda, volvemos a la página 1
+  // Cuando cambie el término, volvemos a la primera página
   useEffect(() => {
     setPage(1);
   }, [searchTerm]);
@@ -29,18 +31,8 @@ export default function Home() {
       </p>
     );
 
-  // Filtrado simple por nombre
-  const filteredCharacters = data.results.filter((char) =>
-    char.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Número de personajes por página (según la API, 20 por página)
-  const itemsPerPage = 20;
-
-  // Calculamos el total de páginas
-  const totalPages = searchTerm
-    ? Math.ceil(filteredCharacters.length / itemsPerPage) || 1
-    : data?.info?.pages || 1;
+  const filteredCharacters = data?.results || [];
+  const totalPages = data?.info?.pages || 1;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1f2244] via-[#2b2641] to-[#21243a] text-white pb-6 px-7">
@@ -56,7 +48,7 @@ export default function Home() {
         />
       </header>
 
-      {/* Si no hay personajes filtrados */}
+      {/* Si no hay resultados */}
       {filteredCharacters.length === 0 ? (
         <p className="text-center text-red-400 text-xl mt-6 animate-pulse">
           ❌ No se encontraron personajes con ese nombre
@@ -66,12 +58,7 @@ export default function Home() {
       )}
 
       {/* Paginación */}
-      {(
-        // Si no hay búsqueda → siempre mostramos los botones
-        !searchTerm ||
-        // Si hay búsqueda y más de 1 página de resultados → mostramos botones
-        (searchTerm && filteredCharacters.length > itemsPerPage)
-      ) && filteredCharacters.length > 0 && (
+      {filteredCharacters.length > 0 && (
         <div className="flex justify-center mt-8 gap-4">
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
