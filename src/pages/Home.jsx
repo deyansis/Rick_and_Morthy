@@ -7,7 +7,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
 
-  const { data, isLoading, isError } = useGetCharactersQuery({
+  const { data, isLoading, isError, error } = useGetCharactersQuery({
     page,
     name: searchTerm,
   });
@@ -24,7 +24,8 @@ export default function Home() {
       </p>
     );
 
-  if (isError)
+  // ✅ Si la API devuelve 404, mostramos "no encontrado" en lugar de "error"
+  if (isError && error?.status !== 404)
     return (
       <p className="text-center text-red-500 text-lg mt-10">
         Ocurrió un error 😢
@@ -49,7 +50,7 @@ export default function Home() {
       </header>
 
       {/* Si no hay resultados */}
-      {filteredCharacters.length === 0 ? (
+      {isError && error?.status === 404 ? (
         <p className="text-center text-red-400 text-xl mt-6 animate-pulse">
           ❌ No se encontraron personajes con ese nombre
         </p>
@@ -58,7 +59,7 @@ export default function Home() {
       )}
 
       {/* Paginación */}
-      {filteredCharacters.length > 0 && (
+      {!isError && filteredCharacters.length > 0 && (
         <div className="flex justify-center mt-8 gap-4">
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
